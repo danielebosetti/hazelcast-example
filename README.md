@@ -1,1 +1,1 @@
-# hazelcast-try
+# hazelcast-example
