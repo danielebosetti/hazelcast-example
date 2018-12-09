@@ -3,13 +3,12 @@ package client;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 
-import domain.Car;
 import factory.ClientFactory;
 
-public class RunClientWrite {
+public class RunClientWriteBrokenBytes {
 
   public static void main(String[] args) throws Exception {
-    RunClientWrite o = new RunClientWrite();
+    RunClientWriteBrokenBytes o = new RunClientWriteBrokenBytes();
     o.go();
   }
 
@@ -19,13 +18,10 @@ public class RunClientWrite {
     HazelcastInstance hzClient = cf.getClient();
 
     IMap<Object, Object> map = hzClient.getMap("cars");
-    Car car = new Car();
-    car.setId(1565);
-    map.put(1L, car);
+
+    byte[] bytes = new byte[100];
+    map.put("user-1", bytes  );
     
-    Object item = map.get(1L);
-    System.out.println("item="+item);
     hzClient.shutdown();
   }
-
 }

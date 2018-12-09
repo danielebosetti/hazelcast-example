@@ -4,12 +4,13 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 
 import domain.Car;
+import domain.CarKey;
 import factory.ClientFactory;
 
-public class RunClientWrite {
+public class RunClientWriteCompositeKey {
 
   public static void main(String[] args) throws Exception {
-    RunClientWrite o = new RunClientWrite();
+    RunClientWriteCompositeKey o = new RunClientWriteCompositeKey();
     o.go();
   }
 
@@ -20,12 +21,13 @@ public class RunClientWrite {
 
     IMap<Object, Object> map = hzClient.getMap("cars");
     Car car = new Car();
-    car.setId(1565);
-    map.put(1L, car);
+    car.setId(12313);
     
-    Object item = map.get(1L);
+    Object key = new CarKey(123L, "x-y-z");
+    map.put(key , car);
+    
+    Object item = map.get( key );
     System.out.println("item="+item);
     hzClient.shutdown();
   }
-
 }

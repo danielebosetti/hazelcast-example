@@ -1,9 +1,6 @@
 package domain;
 
-import java.io.Serializable;
-
-public class Car implements Serializable {
-  private static final long serialVersionUID = 2L;
+public class Car {
   
   private long id;
   private double price;

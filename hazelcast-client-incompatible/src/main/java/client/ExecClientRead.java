@@ -2,6 +2,9 @@ package client;
 
 public class ExecClientRead {
   
+  /**
+   * deserializes a different version of car class
+   */
   public static void main(String[] args) throws Exception {
     
     try {

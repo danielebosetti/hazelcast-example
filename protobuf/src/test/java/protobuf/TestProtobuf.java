@@ -38,4 +38,15 @@ public class TestProtobuf {
       }
     }
   }
+
+  @Test
+  public void testWriteBytes() throws Exception {
+    User user = User.newBuilder().setName("mike").setId(1231L).build();
+    byte[] bytes = user.toByteArray();
+    System.out.println("user="+user);
+    System.out.println("bytes length="+bytes.length);
+    User parsed = User.parseFrom(bytes);
+    System.out.println("parsed="+parsed);
+    System.out.println("equals="+(user==parsed));
+  }
 }
