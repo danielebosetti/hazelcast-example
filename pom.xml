@@ -16,5 +16,7 @@
   <modules>
     <module>protobuf</module>
     <module>hazelcast-server</module>
+    <module>hazelcast-client-proto</module>
+    <module>hazelcast-client-incompatible</module>
   </modules>
 </project>
