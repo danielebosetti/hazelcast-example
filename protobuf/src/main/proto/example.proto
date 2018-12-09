@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package proto;
+
+message SearchRequest {
+  string query = 1;
+  int32 page_number = 2;
+  int32 result_per_page = 3;
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+  int64 updatedTime = 3;
+}
+
