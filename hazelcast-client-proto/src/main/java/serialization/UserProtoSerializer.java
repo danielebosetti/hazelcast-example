@@ -6,7 +6,7 @@ import com.hazelcast.nio.serialization.ByteArraySerializer;
 
 import proto.Example.User;
 
-public class UserSerializer implements ByteArraySerializer<User> {
+public class UserProtoSerializer implements ByteArraySerializer<User> {
 
   public static final int HAZELCAST_TYPEID_USER = 99;
 

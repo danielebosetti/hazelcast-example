@@ -14,3 +14,12 @@ message User {
   int64 updatedTime = 3;
 }
 
+message Tick {
+  int64 id = 1;
+  string uuid = 2;
+  int64 time = 3;
+  string system = 4;
+  string host = 5;
+  int32 port = 6;
+  string user = 7;
+}

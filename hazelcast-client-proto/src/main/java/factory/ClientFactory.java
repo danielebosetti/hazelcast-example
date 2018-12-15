@@ -15,7 +15,7 @@ import com.hazelcast.core.HazelcastInstance;
 import domain.Car;
 import proto.Example.User;
 import serialization.CustomCarSerializer;
-import serialization.UserSerializer;
+import serialization.UserProtoSerializer;
 
 public class ClientFactory {
 
@@ -40,7 +40,7 @@ public class ClientFactory {
         setTypeClass(Car.class);
     
     SerializerConfig ser_user = new SerializerConfig().
-        setImplementation(new UserSerializer()).
+        setImplementation(new UserProtoSerializer()).
         setTypeClass(User.class);
     
     
@@ -66,7 +66,12 @@ public class ClientFactory {
   private ClientConfig getConfigNoSerialization() {
     GroupConfig groupConfig = new GroupConfig("dev-1", "");
     ClientConfig config = new ClientConfig();
-    config.setProperty("hazelcast.logging.type", "slf4j");    
+    config.setProperty("hazelcast.logging.type", "slf4j");
+    /*
+     * use this when debugging (placing breakpoints), so that requests don't fail
+     */
+    //config.setProperty("hazelcast.client.heartbeat.timeout", "3600000");
+    
     config.setGroupConfig(groupConfig);
     ClientNetworkConfig networkConfig = new ClientNetworkConfig();
     networkConfig.setAddresses(Arrays.asList("localhost:5701"));
