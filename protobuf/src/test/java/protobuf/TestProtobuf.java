@@ -1,11 +1,14 @@
 package protobuf;
 
+import java.util.UUID;
+
 import org.junit.Test;
 
 import com.google.protobuf.Any;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import proto.Example.SearchRequest;
+import proto.Example.Tick;
 import proto.Example.User;
 
 public class TestProtobuf {
@@ -48,5 +51,15 @@ public class TestProtobuf {
     User parsed = User.parseFrom(bytes);
     System.out.println("parsed="+parsed);
     System.out.println("equals="+(user==parsed));
+  }
+  
+  @Test
+  public void testTick() {
+    Tick tick = Tick.newBuilder()
+        .setUuid(UUID.randomUUID().toString())
+        .setTime(System.currentTimeMillis()).build();
+    System.out.println(tick);
+    System.out.println("serialized size="+tick.getSerializedSize());
+    System.out.println("bytes length="+tick.toByteArray().length);
   }
 }
